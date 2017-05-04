@@ -15,16 +15,19 @@ var config = {
     },
     plugins: [
         new webpack.HotModuleReplacementPlugin(),
-        new webpack.NoErrorsPlugin()
+        new webpack.NoEmitOnErrorsPlugin()
     ],
     module: {
-        loaders: [
+        rules: [
             {
                 test: /\.jsx?$/,
                 include: path.join(__dirname, 'app/'),
-                loader: 'react-hot!babel'
+                use: {
+                    loader: 'babel-loader',
+                }
             }
         ]
     }
 };
+
 module.exports = config;
